@@ -1,11 +1,12 @@
 #include <ctype.h>
-#define NUMBER '0'
+#define NUMBER 	'0'
 
 int getch(void);
 void ungetch(int);
 
-int getop(char s[]) {
-    int i, c;
+int getop(char s[])
+{
+    int i, c, d;
 
     while ((s[0] = c = getch()) == ' ' || c == '\t') {
 	;
@@ -15,15 +16,14 @@ int getop(char s[]) {
 	return c;
     }
     i = 0;
+    // This loop is concise, but it does require one to separate the '-' and any other operator symbol by a space.
     if (c == '-') {
-	if (isdigit(s[++i] = c = getch())) {
-	    while (isdigit(s[++i] = c = getch())) {
-		;
-	    }
+	d = getch();
+	if (d == ' ') {
+	    return c;
 	}
 	else {
-	    ungetch(c);
-	    return '-';
+	    ungetch(d);
 	}
     }
 

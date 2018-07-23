@@ -1,7 +1,7 @@
 #define MAXVAL 	100
 
-int sp = 0;
-double val[MAXVAL];
+int sp = 0;		// stack position
+double val[MAXVAL];	// stack
 
 void push(double op)
 {
@@ -15,11 +15,11 @@ void push(double op)
 
 double pop(void)
 {
-    if (sp >= 0) {
+    if (sp > 0) {
 	return val[--sp];
     }
     else {
-	printf("error: stack empty\n");
+	printf("error: stack is empty\n");
 	return 0.0;
     }
 }
